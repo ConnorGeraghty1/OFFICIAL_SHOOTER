@@ -9,12 +9,12 @@ import frc.robot.Constants;
 import frc.robot.Subsystems.ShooterSubsystem;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class RunShooterIntake extends Command {
+public class SpitItBack extends Command {
   /** Creates a new RunShooterCommand. */
 
   private static final ShooterSubsystem shooterSubsystem = Constants.ShooterConstants.shooterSubsystem;
 
-  public RunShooterIntake() {
+  public SpitItBack() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -25,8 +25,7 @@ public class RunShooterIntake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println("Running shooter command");
-    shooterSubsystem.runShooter();
+    shooterSubsystem.setSpeed(-0.25);
   }
 
   // Called once the command ends or is interrupted.

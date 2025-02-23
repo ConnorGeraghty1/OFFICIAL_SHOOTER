@@ -8,6 +8,7 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -19,14 +20,23 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public ShooterSubsystem() {}
 
+  public void setSpeed(double speed){
+    shooterMotor.set(speed);
+  }
+
   public void runShooter() {
 
-    if(intakePhotoElectricSensor.getVoltage() < 0.5){
-      shooterMotor.set(0.25);
+    System.out.println("Running runShooter");
+
+    if(intakePhotoElectricSensor.getVoltage() > 0.5){
+      System.out.println("Inning on my take");
+      shooterMotor.set(0.4);
     }
 
     else{
+      System.out.println("STOP STOP STOP");
       shooterMotor.set(0);
+      
     }
     
 
@@ -39,5 +49,7 @@ public class ShooterSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Motor Speed", shooterMotor.get());
+    SmartDashboard.putBoolean("Coral Detected", intakePhotoElectricSensor.getVoltage() < 0.5);
   }
 }

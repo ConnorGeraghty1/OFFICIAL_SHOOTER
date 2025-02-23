@@ -9,7 +9,7 @@ public class Constants {
     }
 
     public static final class ShooterConstants {
-        public static final int kShooterMotorID = 0;
+        public static final int kShooterMotorID = 11;
         public static final int intakePhotoElectricSensorID = 0;
         public static final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
     }
